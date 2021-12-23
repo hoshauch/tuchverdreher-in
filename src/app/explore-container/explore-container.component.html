@@ -1,4 +1,66 @@
 <div id="container">
-  <strong>{{ name }}</strong>
-  <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">
+        0. Addresse der Tuchverdreher:in
+      </ion-label>
+      <ion-input [(ngModel)]="ip" color="secondary"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">
+        1. Tuchverdrehungsgeschwindigkeit
+      </ion-label>
+      <ion-range [(ngModel)]="speed" min="50" max="5000" color="secondary" (ionChange)="changeSpeed()">
+        <ion-label slot="start">50</ion-label>
+        <ion-label slot="end">{{speed}}</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">
+        2. Beschleunigung
+      </ion-label>
+      <ion-range [(ngModel)]="accel" min="0" [max]="speed" color="secondary">
+        <ion-label slot="start">0</ion-label>
+        <ion-label slot="end">{{accel}}</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">
+        3. Umdrehungen
+      </ion-label>
+      <ion-range [disabled]="rotationsDisabled" [(ngModel)]="rotations" min="1" max="50" color="secondary">
+        <ion-label slot="start">1</ion-label>
+        <ion-label slot="end">{{rotations}}</ion-label>
+      </ion-range>
+    </ion-item>
+
+    <ion-item>
+      <ion-toggle [(ngModel)]="rotationsDisabled" (ionChange)="toggle($event)">ODER</ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">
+        3. Tuchdrehschritte
+      </ion-label>
+      <ion-range [disabled]="stepsDisabled" [(ngModel)]="steps" min="50" max="65000" color="secondary">
+        <ion-label slot="start">50</ion-label>
+        <ion-label slot="end">{{steps}}</ion-label>
+      </ion-range>
+    </ion-item>
+
+
+
+
+    <ion-button (click)="init()">
+      start
+    </ion-button>
+    <ion-button (click)="stop()" color="warning">
+      stop
+    </ion-button>
+
+    <ion-list>
+      <ion-item *ngFor="let message of messages">
+        {{message}}
+      </ion-item>
+    </ion-list>
+  </ion-list>
 </div>
