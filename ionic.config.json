@@ -1,0 +1,7 @@
+{
+  "name": "tuchverdreher:in",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
