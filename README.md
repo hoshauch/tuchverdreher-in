@@ -6,6 +6,9 @@ All your devices must be in the same network.
 
 ### Hardware
 
+We used a Wemos D1 Mini and a TCM2208 on a breadboard. The powersupply for the motor has 24V.
+Remember to set a current limit on the TCM2208.
+
 | D1mini  	| TCM2208  	| 
 |---	    |---	    |
 | 3V  	    | VDD  	    |  
@@ -14,7 +17,7 @@ All your devices must be in the same network.
 | D7    	| DIR   	|
 | D8        | STEP      |
 
-| Motor  	| TCM2208  	| 
+| NEMA17  	| TCM2208  	| 
 |---	    |---	    |
 | 1B  	    | 1B  	    |  
 | 1A   	    | 1A     	|   	
@@ -27,7 +30,7 @@ All your devices must be in the same network.
 | -   	    | GND (M)  	| 
 
 ### Software
-Change the WIFI Settings in arduino\wemosd1mini_tcm2208_nema17.ino
+Change the WIFI Settings and stepsPerRevolution in arduino\wemosd1mini_tcm2208_nema17.ino
 Deploy arduino\wemosd1mini_tcm2208_nema17.ino to a Wemos D1 Mini or similar device.
 
 You can control the device via HTTP_GET like 'http://192.168.84.34/Stop'
@@ -41,7 +44,20 @@ You can control the device via HTTP_GET like 'http://192.168.84.34/Stop'
 | /Init?Speed=500&Accel=250       | Accelerates with 250/sec to speed 500 |      
 
 ### App 
-To build the app use the following commands:
 
+Install dependencies with
+
+```
 npm -i
+```
+
+You could start the app in your browser with
+```
+npm start
+```
+
+or build the app use the following command:
+
+```
 ionic capacitor run android
+```
