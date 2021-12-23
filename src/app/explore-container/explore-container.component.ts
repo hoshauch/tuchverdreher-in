@@ -32,9 +32,9 @@ export class ExploreContainerComponent implements OnInit {
   }
 
   public init() {
-    let message = `http://${this.ip}/Init?Delay=${this.speed}&Steps=${this.steps}&Accel=${this.accel}`;
+    let message = `http://${this.ip}/Init?Speed=${this.speed}&Steps=${this.steps}&Accel=${this.accel}`;
     if (this.stepsDisabled) {
-      message = `http://${this.ip}/Init?&Delay=${this.speed}&Rotations=${this.rotations}&Accel=${this.accel}`;
+      message = `http://${this.ip}/Init?&Speed=${this.speed}&Rotations=${this.rotations}&Accel=${this.accel}`;
     }
     this.httpClient.get(message, { responseType: 'text' }).pipe(take(1)).subscribe(x => {
       this.messages.splice(0, 0, x);
